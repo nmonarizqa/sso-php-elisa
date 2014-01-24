@@ -1,0 +1,56 @@
+PS C:\WINDOWS\system32> import-module msonlineextended -force
+PS C:\WINDOWS\system32> connec-msolservice
+connec-msolservice : The term 'connec-msolservice' is not recognized as the
+name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is
+correct and try again.
+At line:1 char:1
++ connec-msolservice
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (connec-msolservice:String) [],
+   CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\WINDOWS\system32> connect-msolservice
+PS C:\WINDOWS\system32> new-msolserviceprincipal -serviceprincipalnames @("phpSa
+mple/localhost") -Displayname "Federation Sample Web Site" -type Symmetric -usag
+e verify -startdate "21/01/2014" -enddate "21/01/2019"
+The following symmetric key was created as one was not supplied 5kMmEzW6iUxYTGom
+04MogUq4UxNVNDE/CACaoqS6cB8=
+new-msolserviceprincipal : Uniqueness violation. Property:
+ServicePrincipal.ServicePrincipalNames.
+At line:1 char:1
++ new-msolserviceprincipal -serviceprincipalnames @("phpSample/localhost")
+-Displa ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~
+    + CategoryInfo          : OperationStopped: (:) [New-MsolServicePrincipal]
+   , MicrosoftOnlineException
+    + FullyQualifiedErrorId : Microsoft.Online.Administration.Automation.Uniqu
+   enessValidationException,Microsoft.Online.Administration.Automation.NewSer
+  vicePrincipal
+
+PS C:\WINDOWS\system32> new-msolserviceprincipal -serviceprincipalnames @("phpSa
+mpleJan/localhost") -Displayname "Federation Sample Web Site" -type Symmetric -u
+sage verify -startdate "21/01/2014" -enddate "21/01/2019"
+The following symmetric key was created as one was not supplied s158TrZZjkbO9MPX
+nRotRupUluP0vyAarzUgCEdzlRI=
+
+
+DisplayName           : Federation Sample Web Site
+ServicePrincipalNames : {phpSampleJan/localhost,
+                        2a5aaefd-0b5d-4031-bec2-c045ca8294ad}
+ObjectId              : 9036895a-f466-47e8-a582-02953a93bb2b //tenantId
+AppPrincipalId        : 2a5aaefd-0b5d-4031-bec2-c045ca8294ad 
+TrustedForDelegation  : False
+AccountEnabled        : True
+Addresses             : {}
+KeyType               : Symmetric
+KeyId                 : f894a2da-0fc4-4998-8300-d82619cfb28a
+StartDate             : 21-Jan-14 8:00:00 AM
+EndDate               : 21-Jan-19 8:00:00 AM
+Usage                 : Verify
+AudienceURI: 
+
+
+PS C:\WINDOWS\system32>

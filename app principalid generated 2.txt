@@ -1,0 +1,58 @@
+PS C:\WINDOWS\system32> $servicePrincipalName = "Elisa365LocalJan"
+PS C:\WINDOWS\system32> $cr = get-credential
+
+cmdlet Get-Credential at command pipeline position 1
+Supply values for the following parameters:
+Credential
+PS C:\WINDOWS\system32> conect-msolservice -credential $cr
+conect-msolservice : The term 'conect-msolservice' is not recognized as the
+name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is
+correct and try again.
+At line:1 char:1
++ conect-msolservice -credential $cr
++ ~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (conect-msolservice:String) [],
+   CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\WINDOWS\system32> conecct-msolservice -credential $cr
+conecct-msolservice : The term 'conecct-msolservice' is not recognized as the
+name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is
+correct and try again.
+At line:1 char:1
++ conecct-msolservice -credential $cr
++ ~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (conecct-msolservice:String) [],
+    CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS C:\WINDOWS\system32> connect-msolservice -credential $cr
+PS C:\WINDOWS\system32> import-module MSOnlineExtended
+PS C:\WINDOWS\system32> $credValue = "FStnXT1QON84B5o38aEmFdlNhEnYtzJ91Gg/JH/Jxi
+w="
+PS C:\WINDOWS\system32> $credType = "Symmetric"
+PS C:\WINDOWS\system32> $replyHost = "localhost"
+PS C:\WINDOWS\system32> $replyAddress = "https://localhost/phpSample/index.php"
+PS C:\WINDOWS\system32> $replyUrl = New-MsolServicePrincipalAddresses -Address $
+replyAddress
+PS C:\WINDOWS\system32> $servicePrincipalName = "Elisa365localJan"
+PS C:\WINDOWS\system32> $sp = New-MsolServicePrincipal -ServicePrincipalNames @(
+"$servicePrincipalName/$replyHost") -DisplayName "$ServicePrincipalName" -Addres
+ses $replyUrl -Type $credType -Value $credValue
+PS C:\WINDOWS\system32> $Read = "Service Support Administrator"
+PS C:\WINDOWS\system32> $ReadWrite = "Company Administrator"
+PS C:\WINDOWS\system32> Add-MsolRoleMember -RoleMemberType ServicePrincipal -Rol
+eName $Read -RoleMemberObjectId $sp.objectid
+PS C:\WINDOWS\system32> $tenantId = (get-msolcompanyinformation).objectId
+
+Company ID (you will need to put this in the portal): 447e695d-4aca-4596-b165-c
+ce9c7cf299c
+
+AppPrincipal ID(you will need to put this in the portal): b51580a9-0ab4-46bc-81
+ce-c80c63dc3e40
+
+App Principal Secret: FStnXT1QON84B5o38aEmFdlNhEnYtzJ91Gg/JH/Jxiw=
+
+Audience URI: b51580a9-0ab4-46bc-81ce-c80c63dc3e40
